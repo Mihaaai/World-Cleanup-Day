@@ -11,6 +11,8 @@ import TrashAmount from './TrashAmount';
 import { noop } from '../../shared/helpers';
 import './Details.css';
 
+import last from 'lodash/last';
+
 class Details extends Component {
   render() {
     const {
@@ -90,6 +92,15 @@ class Details extends Component {
               );
             })}
           </div>
+        </div>
+        <div className="Details-default-container">
+          <span className="Details-trash-type-title">Before & After</span>
+            {thumbnails.filter((photo) => {
+              photo.id == last(thumbnails).url}
+            ).map((photo) => {
+              return (<img src={photo.url} key={photo.url} />)
+            })}
+
         </div>
         <div className="Details-filler" />
         {canEdit &&
